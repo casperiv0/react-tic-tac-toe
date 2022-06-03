@@ -20,10 +20,10 @@ export function BoardButton({ board, idx, row }: Props) {
   const shouldPositionAnimate = board.state.winner?.positions.includes(idx);
 
   React.useEffect(() => {
-    if (row !== null && !shouldPositionAnimate) {
+    if (row !== null) {
       controls.start({ scale: [1, 1.2, 1], transition: { duration: 0.2, ease: "linear" } });
     }
-  }, [row, shouldPositionAnimate, controls]);
+  }, [row, controls]);
 
   React.useEffect(() => {
     if (shouldPositionAnimate) {
