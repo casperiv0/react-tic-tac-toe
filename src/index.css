@@ -11,7 +11,7 @@ body {
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #cfdbd5;
+  background-color: #b7b7a4;
   font-family: "Raleway", sans-serif;
 }
 
@@ -33,8 +33,8 @@ body {
 .board-button {
   appearance: none;
   cursor: pointer;
-  background-color: #cfdbd5;
-  border: 2px solid #333533;
+  background-color: #b7b7a4;
+  border: 2px solid #7d7d68;
 
   width: var(--button-width);
   height: var(--button-width);
@@ -54,6 +54,10 @@ body {
 
 .board-button[data-disabled="true"] {
   cursor: default;
+}
+
+.board-button svg {
+  fill: #30302b;
 }
 
 /** Scores */
