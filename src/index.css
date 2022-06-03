@@ -1,0 +1,84 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #cfdbd5;
+  font-family: "Raleway", sans-serif;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  --button-width: 10em;
+  --button-negative-margin: calc(0.125em * -1);
+  display: grid;
+  grid-template-columns: repeat(3, 8.125em);
+}
+
+.board-button {
+  appearance: none;
+  cursor: pointer;
+  background-color: #cfdbd5;
+  border: 2px solid #333533;
+
+  width: var(--button-width);
+  height: var(--button-width);
+
+  /* hide border overlap */
+  margin: var(--button-negative-margin);
+}
+
+.button-current-player {
+  opacity: 0;
+  transition: 150ms;
+}
+
+.board-button:hover .button-current-player {
+  opacity: 0.5;
+}
+
+.board-button[data-disabled="true"] {
+  cursor: default;
+}
+
+/** Scores */
+.scores {
+  margin-top: 2em;
+  padding: 0 2em;
+  display: grid;
+  grid-template-columns: repeat(3, 8.125em);
+  gap: 2em;
+}
+
+.scores-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.scores-item h1 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.scores-item h4 {
+  font-weight: 600;
+  font-size: 2.5rem;
+}
