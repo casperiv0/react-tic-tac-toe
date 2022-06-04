@@ -5,7 +5,6 @@ import { Circle, X } from "react-bootstrap-icons";
 import { useBoard } from "../hooks/useBoard";
 
 interface Props {
-  board: ReturnType<typeof useBoard>;
   row: Player | null;
   idx: number;
 }
@@ -15,19 +14,26 @@ const PLAYER_ICONS = {
   [Player.Computer]: <Circle width={60} height={60} />,
 };
 
-export function BoardButton({ board, idx, row }: Props) {
+export function BoardButton({ idx, row }: Props) {
   const controls = useAnimation();
-  const shouldPositionAnimate = board.state.winner?.positions.includes(idx);
+  const board = useBoard();
+
+  const shouldPositionAnimate = React.useMemo(
+    () => board.state.winner?.positions.includes(idx),
+    [board.state.winner], // eslint-disable-line
+  );
 
   React.useEffect(() => {
     if (row !== null) {
+      // animate when a player sets a position
       controls.start({ scale: [1, 1.2, 1], transition: { duration: 0.2, ease: "linear" } });
     }
   }, [row, controls]);
 
   React.useEffect(() => {
     if (shouldPositionAnimate) {
-      controls.start({ scale: [1, 1.5, 1], transition: { duration: 0.3, ease: "easeInOut" } });
+      // animate when the current element of the array is the winning position
+      controls.start({ scale: [1, 1.5, 1], transition: { duration: 0.3, ease: "linear" } });
     }
   }, [controls, shouldPositionAnimate]);
 

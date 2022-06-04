@@ -60,6 +60,7 @@ body {
 
 .board-button[data-disabled="true"] {
   cursor: default;
+  pointer-events: none;
 }
 
 .board-button svg {
