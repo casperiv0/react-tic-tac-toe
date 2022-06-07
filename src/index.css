@@ -32,11 +32,14 @@ body {
 .board {
   --button-width: 10em;
   --button-negative-margin: calc(0.125em * -1);
+
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, 8.125em);
 }
 
 .board-button {
+  position: relative;
   appearance: none;
   cursor: pointer;
   background-color: var(--bg-green);
@@ -67,6 +70,19 @@ body {
   fill: var(--svg-fill);
 }
 
+.win-line {
+  display: block;
+  width: 110%;
+  height: 4px;
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 1em;
+
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
 /** Scores */
 .scores {
   margin-top: 2em;
@@ -92,4 +108,12 @@ body {
 .scores-item h4 {
   font-weight: 600;
   font-size: 2.5rem;
+}
+
+/** development */
+.index-item {
+  position: absolute;
+  bottom: 0.1em;
+  left: 0.5em;
+  font-size: 1rem;
 }

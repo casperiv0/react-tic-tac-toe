@@ -21,7 +21,12 @@ export interface Position {
 
 export interface Winner {
   player: Player;
-  positions: number[];
+  winItem: WinItem;
+}
+
+export interface WinItem {
+  indices: [number, number, number];
+  style: Pick<CSSStyleDeclaration, "top" | "left" | "width"> & { rotate: number };
 }
 
 export interface BoardStore {

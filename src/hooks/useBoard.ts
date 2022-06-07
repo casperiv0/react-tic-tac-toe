@@ -1,17 +1,17 @@
-import { Board, BoardStore, GameState, Player, Winner } from "../types";
+import { Board, BoardStore, GameState, Player, WinItem, Winner } from "../types";
 import create from "zustand";
 
 const DEFAULT_BOARD: Board = [null, null, null, null, null, null, null, null, null];
 
-const POSSIBLE_WINS = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
+const POSSIBLE_WINS: WinItem[] = [
+  { indices: [0, 1, 2], style: { rotate: 0, left: "5%", top: `${125 / 2}px`, width: "90%" } },
+  { indices: [3, 4, 5], style: { rotate: 0, left: "5%", top: "49%", width: "90%" } },
+  { indices: [6, 7, 8], style: { rotate: 0, left: "5%", top: "82.5%", width: "90%" } },
+  { indices: [0, 3, 6], style: { rotate: 90, left: "17%", top: "5%", width: "90%" } },
+  { indices: [1, 4, 7], style: { rotate: 90, left: "50.5%", top: "5%", width: "90%" } },
+  { indices: [2, 5, 8], style: { rotate: 90, left: "84%", top: "5%", width: "90%" } },
+  { indices: [0, 4, 8], style: { rotate: 45, left: "8%", top: "7%", width: "120%" } },
+  { indices: [2, 4, 6], style: { rotate: -45, left: "6%", top: "93%", width: "120%" } },
 ];
 
 const useBoardStore = create<BoardStore>((set) => ({
@@ -43,8 +43,8 @@ export function useBoard() {
       const possibleWinArr = POSSIBLE_WINS[i];
       let count = 0;
 
-      for (let j = 0; j < possibleWinArr.length; j++) {
-        const item = board.at(possibleWinArr[j]);
+      for (let j = 0; j < possibleWinArr.indices.length; j++) {
+        const item = board.at(possibleWinArr.indices[j]);
 
         if (item === boardStore.currentPlayer) {
           count += 1;
@@ -52,7 +52,7 @@ export function useBoard() {
       }
 
       if (count === 3) {
-        winner = { player: boardStore.currentPlayer, positions: possibleWinArr };
+        winner = { player: boardStore.currentPlayer, winItem: possibleWinArr };
         break;
       } else {
         winner = null;

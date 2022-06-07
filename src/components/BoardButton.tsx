@@ -19,7 +19,7 @@ export function BoardButton({ idx, row }: Props) {
   const board = useBoard();
 
   const shouldPositionAnimate = React.useMemo(
-    () => board.state.winner?.positions.includes(idx),
+    () => board.state.winner?.winItem.indices.includes(idx),
     [board.state.winner], // eslint-disable-line
   );
 
@@ -44,6 +44,7 @@ export function BoardButton({ idx, row }: Props) {
       data-row-item={idx}
       data-disabled={board.state.gameState === GameState.Ended}
     >
+      {process.env.NODE_ENV === "development" ? <span className="index-item">{idx}</span> : null}
       {row ? (
         <motion.span style={{ display: "block" }} animate={controls}>
           {PLAYER_ICONS[row]}
