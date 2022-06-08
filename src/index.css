@@ -19,6 +19,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-green);
   font-family: "Raleway", sans-serif;
+  overflow: hidden;
 }
 
 .app {
@@ -36,6 +37,12 @@ body {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 8.125em);
+}
+
+@media (max-width: 800px) {
+  .board {
+    grid-template-columns: repeat(3, 6.7em);
+  }
 }
 
 .board-button {
@@ -73,14 +80,10 @@ body {
 .win-line {
   display: block;
   width: 110%;
-  height: 4px;
+  height: 5px;
   background-color: black;
   position: absolute;
-  top: 50%;
-  left: 50%;
   border-radius: 1em;
-
-  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 /** Scores */
@@ -89,7 +92,6 @@ body {
   padding: 0 2em;
   display: grid;
   grid-template-columns: repeat(3, 8.125em);
-  gap: 2em;
 }
 
 .scores-item {
@@ -108,6 +110,16 @@ body {
 .scores-item h4 {
   font-weight: 600;
   font-size: 2.5rem;
+}
+
+@media (max-width: 800px) {
+  .scores-item h1 {
+    font-size: 1.1rem;
+  }
+
+  .scores-item h4 {
+    font-size: 2rem;
+  }
 }
 
 /** development */
