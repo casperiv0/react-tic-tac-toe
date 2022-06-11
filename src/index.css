@@ -20,6 +20,7 @@ body {
   background-color: var(--bg-green);
   font-family: "Raleway", sans-serif;
   overflow: hidden;
+  font-size: 1.5rem;
 }
 
 .app {
@@ -31,18 +32,12 @@ body {
 }
 
 .board {
-  --button-width: 10em;
   --button-negative-margin: calc(0.125em * -1);
 
   position: relative;
   display: grid;
-  grid-template-columns: repeat(3, 8.125em);
-}
-
-@media (max-width: 800px) {
-  .board {
-    grid-template-columns: repeat(3, 6.7em);
-  }
+  grid-template-columns: repeat(3, 5em);
+  grid-template-rows: repeat(3, 5em);
 }
 
 .board-button {
@@ -51,9 +46,6 @@ body {
   cursor: pointer;
   background-color: var(--bg-green);
   border: 2px solid var(--border-green);
-
-  width: var(--button-width);
-  height: var(--button-width);
 
   /* hide border overlap */
   margin: var(--button-negative-margin);
